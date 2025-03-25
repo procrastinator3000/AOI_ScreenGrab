@@ -8,7 +8,6 @@ namespace AOI_ScreenGrab
     internal class AppData
     {
         public string WO;
-        public string OPID;
         public string PROD;
         public int NR;
 

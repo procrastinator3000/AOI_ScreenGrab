@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Topmost="True"
         
-        Title="AjojScreenGrab" Width="300" Height="220" ResizeMode="NoResize">
+        Title="AjojScreenGrab" Width="300" Height="170" ResizeMode="NoResize">
     <Grid Margin="0,2,0,0" Background="AliceBlue" x:Name="gridMain">
             
         <Grid.RowDefinitions>
@@ -25,7 +25,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
-                <RowDefinition/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -37,11 +36,9 @@
 
             <Label Grid.Row="0" Grid.Column="0" x:Name="label" Content="WO" />
             <Label Grid.Row="1" Grid.Column="0" x:Name="label1" Content="Produkt"/>
-            <Label Grid.Row="2" Grid.Column="0" x:Name="label1_Copy" Content="nr op"/>
 
             <TextBox Grid.Row="0" Grid.Column="1" x:Name="tbWO" Margin="2"/>
             <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbProduct" Margin="2"/>
-            <TextBox Grid.Row="2" Grid.Column="1" x:Name="tbid" Margin="2"/>
         </Grid>
 
         <Button Grid.Row="3" Grid.ColumnSpan="1" Margin="0, 5, 0 ,0" x:Name="button" Content="Screenshot" Click="button_Click" MinHeight="40"/>

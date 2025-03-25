@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Forms;
 using Path = System.IO.Path;
@@ -33,7 +32,6 @@ namespace AOI_ScreenGrab
             _screens.AddRange(Screen.AllScreens.Select(s => new Tuple<string, Screen>(s.DeviceName, s)));
             tbWO.Text = _data.WO;
             tbProduct.Text = _data.PROD;
-            tbid.Text = _data.OPID;
             lblCounter.Content = "" + _data.NR;
         }
 
@@ -47,7 +45,6 @@ namespace AOI_ScreenGrab
                 {
                     WO = tbWO.Text,
                     PROD = tbProduct.Text,
-                    OPID = tbid.Text,
                     NR = 0,
                 };
             }
@@ -58,7 +55,6 @@ namespace AOI_ScreenGrab
                             .Replace("{WO}", tbWO.Text)
                             .Replace("{LINE}", c.LineId)
                             .Replace("{PROD}", tbProduct.Text)
-                            .Replace("{OPID}", tbid.Text)
                             .Replace("{DATE}", now.ToString("ddMMyyyy-hhmmss"))
                             .Replace("{NR}", ""+_data.NR)
                             + ".jpg";
@@ -73,7 +69,7 @@ namespace AOI_ScreenGrab
 
             GrabScreen(rect.Left, rect.Top, rect.Width, rect.Height, filepath);
             _data.Save();
-            LogToFile($"{now.ToString("yyyy.MM.dd hh:mm:ss")}|{tbWO.Text}|{tbProduct.Text}|{tbid.Text}|{_data.NR}");
+            LogToFile($"{now.ToString("yyyy.MM.dd hh:mm:ss")}|{tbWO.Text}|{tbProduct.Text}|{_data.NR}");
             lblCounter.Content = "" + _data.NR;
             if(c.ShowMessage)
                 System.Windows.Forms.MessageBox.Show($"Zapisano zdjecie z numerem [{_data.NR}]");
@@ -100,7 +96,7 @@ namespace AOI_ScreenGrab
             {
                 gridFields.Visibility = Visibility.Visible;
                 btnToggle.Content = "v";
-                this.Height = 220;
+                this.Height = 170;
             }
             else
             {
