@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -17,12 +18,26 @@ namespace AOI_ScreenGrab
         readonly List<Tuple<string, Screen>> _screens = new List<Tuple<string, Screen>>();
 
         AppData _data;
+        string _lastScreenshotPath = String.Empty;
+        string _rumunFilepath;
 
         public MainWindow()
         {
             InitializeComponent();
             AppSettings.Init();
             _data = AppData.Load();
+            _rumunFilepath = AppSettings.Current.LogsDir + $"\\rumunskieRozwiazanie.txt";
+            if (File.Exists(_rumunFilepath))
+            {
+                try
+                {
+                    _lastScreenshotPath = File.ReadAllText(_rumunFilepath);
+                }
+                catch (Exception)
+                {
+
+                }
+            }
             Init();
         }
 
@@ -70,9 +85,13 @@ namespace AOI_ScreenGrab
             GrabScreen(rect.Left, rect.Top, rect.Width, rect.Height, filepath);
             _data.Save();
             LogToFile($"{now.ToString("yyyy.MM.dd hh:mm:ss")}|{tbWO.Text}|{tbProduct.Text}|{_data.NR}");
+            _lastScreenshotPath = filepath;
+            File.WriteAllText(_rumunFilepath, _lastScreenshotPath);
             lblCounter.Content = "" + _data.NR;
             if(c.ShowMessage)
                 System.Windows.Forms.MessageBox.Show($"Zapisano zdjecie z numerem [{_data.NR}]");
+            if(c.ShowPhoto)
+                Poka_Fote();
         }
 
         void GrabScreen(int left, int top, int w, int h, string filepath)
@@ -116,6 +135,17 @@ namespace AOI_ScreenGrab
             {
 
             }
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            Poka_Fote();
+        }
+
+        private void Poka_Fote()
+        {
+            if (!string.IsNullOrWhiteSpace(_lastScreenshotPath))
+                Process.Start(_lastScreenshotPath);
         }
     }
 }

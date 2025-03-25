@@ -20,6 +20,7 @@ namespace AOI_ScreenGrab
         public int ScreenIndex = -1;
         public string LineId = "SMT01";
         public bool ShowMessage = false;
+        public bool ShowPhoto = true;
         public string LogsDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
         public static void Init()

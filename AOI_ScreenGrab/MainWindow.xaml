@@ -20,8 +20,15 @@
             <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.ColumnSpan="3" Height="26" FontSize="20" Padding="-6" Content="v" Click="Button_Click_1" x:Name="btnToggle"/>
-        <Grid Grid.Row="1" x:Name="gridFields" Grid.ColumnSpan="2">
+        <Grid Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button  Height="26" Margin="0, 0, 4, 0" FontSize="20" Padding="-6" Content="v" Click="Button_Click_1" x:Name="btnToggle"/>
+            <Button Grid.Column="1" Margin="4, 0, 0, 0" x:Name="button2" Click="button2_Click" Content="Pokaż ostatnie zdjęcie"/>
+        </Grid>
+        <Grid Grid.Row="1" x:Name="gridFields" Grid.ColumnSpan="3">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -41,9 +48,15 @@
             <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbProduct" Margin="2"/>
         </Grid>
 
-        <Button Grid.Row="3" Grid.ColumnSpan="1" Margin="0, 5, 0 ,0" x:Name="button" Content="Screenshot" Click="button_Click" MinHeight="40"/>
-        <Label Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" Height="10" Padding="0"  FontSize="8" HorizontalAlignment="Center">Ost. zdj:</Label>
-        <Label Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom" Foreground="OrangeRed" Height="30" FontSize="25" Margin="0,0,0,5" Padding="0" HorizontalAlignment="Center" x:Name="lblCounter">###</Label>
+        <Grid Grid.ColumnSpan="2" Grid.Row="2" Width="auto">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+            <Button Margin="0, 5, 4 ,0" x:Name="button" Content="Screenshot" Click="button_Click" MinHeight="40"/>
+            <Label Grid.Column="2" VerticalAlignment="Top" Height="10" Padding="0"  FontSize="8" HorizontalAlignment="Center">Ost. zdj:</Label>
+            <Label Grid.Column="2" VerticalAlignment="Bottom" Foreground="OrangeRed" Height="30" FontSize="25" Margin="0,0,0,5" Padding="0" HorizontalAlignment="Center" x:Name="lblCounter">###</Label>
+        </Grid>
         <!--<Button Grid.Row="0" Grid.Column="2" x:Name="btnEditSettings" Content="Zmień" Height="32" Width="40" Click="btnEditSettings_Click"/>
         <Button x:Name="btnSave" Grid.Row="1" Grid.Column="2" Content="Zapisz" Visibility="Hidden" Click="btnSave_Click"/>
         <Button x:Name="btnCancel" Grid.Row="2" Grid.Column="2" Content="Anuluj" Visibility="Hidden" Click="btnCancel_Click"/>-->
